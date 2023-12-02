@@ -1,0 +1,58 @@
+﻿@page "/pages/busroutes"
+@inject HttpClient http
+@inject NavigationManager nvaManager
+@inject ISnackbar snackbar
+@inject IDialogService DialogService
+
+<MudCard class="mt-10">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">Bus List</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudFab Size="Size.Small" Href="/pages/busroutes/Add" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        @if (this.busRoutes is null)
+        {
+            <ProgressIndicator />
+        }
+        else
+        {
+            <MudTable Items="@busRoutes">
+                <HeaderContent>
+                    <MudTh><MudTableSortLabel SortBy="new Func<BusRouteViewModel, object>(x=>x.RouteName)">Name</MudTableSortLabel></MudTh>
+                   <MudTh>Distance (appox.)</MudTh>
+                   <MudTh>Journey Hour (approx.)</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context.RouteName</MudTd>
+                   <MudTd>@context.ApproximateDistance</MudTd>
+                    <MudTd>@context.ApproximateJourneyHour</MudTd>
+                </RowTemplate>
+                <PagerContent>
+                    <MudTablePager PageSizeOptions="new int[] { 10, 25, 50, 100 }" HorizontalAlignment="HorizontalAlignment.Right" />
+
+                </PagerContent>
+            </MudTable>
+        }
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private List<BusRouteViewModel>? busRoutes { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await this.http.GetFromJsonAsync<List<BusRouteViewModel>>("/api/BusRoutes/VM");
+        if(data is null)
+        {
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Cannot load busses.", Severity.Error);
+        }
+        else
+        {
+            this.busRoutes = data;
+        }
+    }
+}

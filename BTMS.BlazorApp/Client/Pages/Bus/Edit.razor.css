@@ -1,0 +1,6 @@
+﻿.c-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    margin-bottom: 10px;
+}

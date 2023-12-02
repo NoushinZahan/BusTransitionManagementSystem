@@ -1,0 +1,117 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\0so2ey0l.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\0so2ey0l.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\1ywwtxf0.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\1ywwtxf0.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\2pxamykc.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\2pxamykc.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\2xq3vaut.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\2xq3vaut.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\2zytn2mp.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\2zytn2mp.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\30zdhjmq.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\30zdhjmq.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\bus.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\bus.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\dh51okh3.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\dh51okh3.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\ew52aizx.png",
+      "PackagePath": "staticwebassets\\Pictures\\ew52aizx.png"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\gfp1ofoj.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\gfp1ofoj.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\gpmyh2q1.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\gpmyh2q1.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\jxxmtwo5.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\jxxmtwo5.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\lccu2fol.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\lccu2fol.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\mdznkmw0.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\mdznkmw0.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\o2hvne5o.png",
+      "PackagePath": "staticwebassets\\Pictures\\o2hvne5o.png"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\plpedh04.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\plpedh04.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\rii314h2.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\rii314h2.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\spkzg4vg.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\spkzg4vg.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\ssplqmkr.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\ssplqmkr.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\v1dssjjw.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\v1dssjjw.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\vksxd32e.png",
+      "PackagePath": "staticwebassets\\Pictures\\vksxd32e.png"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\wczf2w3g.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\wczf2w3g.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\ydylr22u.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\ydylr22u.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Server\\wwwroot\\Pictures\\ymauwnkw.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\ymauwnkw.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BTMS.BlazorApp.Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BTMS.BlazorApp.Server.props",
+      "PackagePath": "build\\BTMS.BlazorApp.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BTMS.BlazorApp.Server.props",
+      "PackagePath": "buildMultiTargeting\\BTMS.BlazorApp.Server.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BTMS.BlazorApp.Server.props",
+      "PackagePath": "buildTransitive\\BTMS.BlazorApp.Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

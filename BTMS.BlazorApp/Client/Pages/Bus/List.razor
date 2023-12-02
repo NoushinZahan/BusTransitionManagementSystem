@@ -1,0 +1,97 @@
+﻿@page "/buses"
+@using BTMS.BlazorApp.Client.Dialogs;
+@inject HttpClient http
+@inject NavigationManager nvaManager
+@inject ISnackbar snackbar
+@inject IDialogService DialogService
+
+<MudCard class="mt-10">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">Bus List</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudFab Size="Size.Small" Href="/Buses/Add" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        @if(this.buses is null)
+        {
+            <ProgressIndicator />
+        }
+        else
+        {
+            <MudTable Items="@buses">
+                <HeaderContent>
+                    <MudTh>Picture</MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<Bus, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+                    <MudTh>Number</MudTh>
+                    <MudTh>Type</MudTh>
+                    <MudTh>Capacity</MudTh>
+                    <MudTh></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>
+                        <img class="img-thumnail rounded-circle" src="/Pictures/@context.Picture" style="width:50px;" />
+                    </MudTd>                    <MudTd>@context.Name</MudTd>
+                    <MudTd>@context.Number</MudTd>
+                    <MudTd>@context.BusType</MudTd>
+                    <MudTd>@context.Capacity</MudTd>
+                    <MudTd>
+                        <MudIconButton Size="Size.Small" Href="@GetLink(context.BusId)" ButtonType="ButtonType.Button" Icon="@Icons.Material.Filled.Edit" Variant="Variant.Filled" Color="Color.Primary" ></MudIconButton>
+                        <MudIconButton OnClick="@(()=>ConfirmDelete(@context.BusId))" Size="Size.Small"  ButtonType="ButtonType.Button" Icon="@Icons.Material.Filled.Delete" Variant="Variant.Filled" Color="Color.Warning" ></MudIconButton>
+                    </MudTd>
+                </RowTemplate>
+                <PagerContent>
+                    <MudTablePager PageSizeOptions="new int[] { 10, 25, 50, 100 }"  HorizontalAlignment="HorizontalAlignment.Right"   />
+                    
+                </PagerContent>
+            </MudTable>
+        }
+    </MudCardContent>
+</MudCard>
+@code {
+    private List<Bus>? buses;
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await this.http.GetFromJsonAsync<List<Bus>>("/api/buses");
+        if(data is null)
+        {
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Cannot load busses.", Severity.Error);
+        }
+        else
+        {
+            this.buses = data;
+        }
+    }
+    private string GetLink(int id)
+    {
+        return $"/Buses/Edit/{id}";
+    }
+    private async void ConfirmDelete(int id)
+    {
+        var confirm = this.DialogService.Show<ConfirmDialog>();
+        var result = await confirm.Result;
+        if (!result.Canceled)
+        {
+            await DeleteBus(id);
+        }
+       
+    }
+    private async Task DeleteBus(int id)
+    {
+        var response = await this.http.DeleteAsync($"/api/Buses/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            if(this.buses is null){}
+            else
+            {
+                int index = this.buses.FindIndex(b => b.BusId == id);
+                if (index >= 0) this.buses.RemoveAt(index);
+                this.StateHasChanged();
+            }
+        }
+    }
+
+}

@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = BTMS.BlazorApp.Client
+build_property.RootNamespace = BTMS.BlazorApp.Client
+build_property.ProjectDir = D:\angular\Angular_Class\Blazor\BTMS\BTMS.BlazorApp\Client\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\angular\Angular_Class\Blazor\BTMS\BTMS.BlazorApp\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Dialogs/ConfirmDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = RGlhbG9nc1xDb25maXJtRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/BusRoute/Add.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzUm91dGVcQWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/BusRoute/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzUm91dGVcRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/BusRoute/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzUm91dGVcTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/BusSchedule/Add.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzU2NoZWR1bGVcQWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/BusSchedule/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzU2NoZWR1bGVcRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/BusSchedule/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzU2NoZWR1bGVcTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/Fares/Add.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFyZXNcQWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/Fares/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFyZXNcTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Shared/ProgressIndicator.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFByb2dyZXNzSW5kaWNhdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/Bus/Add.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzXEFkZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-hmxotplolj
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/Bus/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzXEVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-uczx0e8tej
+
+[D:/angular/Angular_Class/Blazor/BTMS/BTMS.BlazorApp/Client/Pages/Bus/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVzXExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-n155d72358

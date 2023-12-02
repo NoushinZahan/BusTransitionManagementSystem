@@ -1,0 +1,133 @@
+﻿@page "/buses/edit/{id:int}"
+@inject HttpClient http
+@inject ISnackbar snackbar
+@inject IJSRuntime js
+<MudCard class="form-card">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">Create new bus</MudText>
+        </CardHeaderContent>
+
+    </MudCardHeader>
+    <MudCardContent>
+        @if(bus is null)
+        {
+            <ProgressIndicator />
+        }
+        else
+        {
+            <EditForm Model="@bus" OnSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="c-2">
+                    <MudTextField Label="Bus name"
+                    @bind-Value="bus.Name" For="@(() => bus.Name)" />
+                    <MudTextField Label="Bus number"
+                    @bind-Value="bus.Number" For="@(() => bus.Number)" />
+                </div>
+                <div class="c-2">
+                    <MudSelect @bind-Value="bus.BusType" Label="Bus type" AdornmentColor="Color.Secondary">
+                        @foreach (BusType item in Enum.GetValues(typeof(BusType)))
+                        {
+                            <MudSelectItem Value="@item">@item</MudSelectItem>
+                        }
+
+                    </MudSelect>
+                    <MudTextField Label="Capacity"
+                    @bind-Value="bus.Capacity" For="@(() => bus.Capacity)" />
+                </div>
+                <div class="col-2">
+                    <MudTextField Label="Picture"
+                    @bind-Value="bus.Picture" OnAdornmentClick="@OpenFilePicker" Adornment="Adornment.End" For="@(() => bus.Picture)" AdornmentIcon="@Icons.Material.Filled.Image" />
+
+                </div>
+                <div class="c-2">
+                    <span></span>
+                    <div style="text-align:right">
+                        @* <button type="submit">Save</button> *@
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Save</MudButton>
+                    </div>
+
+                </div>
+            </EditForm>
+        }
+    </MudCardContent>
+</MudCard>
+<InputFile style="display:none" @ref="uploadControl" OnChange="@((InputFileChangeEventArgs args) =>
+                                   OnInputFileChange(args))" />
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private Bus bus { get; set; } = default!;
+    private InputFile? uploadControl;
+    private IBrowserFile? file;
+
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        this.file = e.File;
+        this.bus.Picture = e.File.Name;
+
+    }
+    public async Task OpenFilePicker()
+    {
+        await js.InvokeAsync<object>("elClick", uploadControl?.Element);
+    }
+    private async void HandleValidSubmit(EditContext editContext)
+    {
+        var r = await UploadImage();
+        this.bus.Picture = r.ImageName;
+        await this.Save();
+
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await this.http.GetFromJsonAsync<Bus>($"/api/Buses/{id}");
+        if(data is null)
+        {
+            this.snackbar.Clear();
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Failed to load bus.", Severity.Error);
+        }
+        else
+        {
+            this.bus = data;
+        }
+    }
+    
+    private async Task Save()
+    {
+        var response = await this.http.PutAsJsonAsync<Bus>($"/api/Buses/{id}", this.bus);
+        if (response.IsSuccessStatusCode)
+        {
+            this.snackbar.Clear();
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Data saved.", Severity.Success);
+            
+            
+        }
+        else
+        {
+            this.snackbar.Clear();
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Failed to save.", Severity.Warning);
+        }
+    }
+    public async Task<UploadResponse> UploadImage()
+    {
+
+        if (file is not null)
+        {
+            var content = new MultipartFormDataContent();
+            var fileContent = new StreamContent(file.OpenReadStream(long.MaxValue));
+
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+            content.Add(content: fileContent, name: "\"file\"", fileName: file.Name);
+            var response = await http.PostAsync("api/Buses/Upload", content);
+            var r = await response.Content.ReadFromJsonAsync<UploadResponse>();
+            if (r is null) return new UploadResponse();
+            else return r;
+        }
+
+        return new UploadResponse();
+    }
+}

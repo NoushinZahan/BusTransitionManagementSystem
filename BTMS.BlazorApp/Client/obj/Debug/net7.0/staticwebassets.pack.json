@@ -1,0 +1,73 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\obj\\Debug\\net7.0\\build-gz\\W4Um4+cP.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BTMS.BlazorApp.Client.styles.css",
+      "PackagePath": "staticwebassets\\BTMS.BlazorApp.Client.styles.css"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\1.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\1.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\2.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\2.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\3.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\3.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\4.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\4.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\5.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\5.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\6.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\6.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\Pictures\\7.jpg",
+      "PackagePath": "staticwebassets\\Pictures\\7.jpg"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\angular\\Angular_Class\\Blazor\\BTMS\\BTMS.BlazorApp\\Client\\wwwroot\\scripts\\scripts.js",
+      "PackagePath": "staticwebassets\\scripts\\scripts.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BTMS.BlazorApp.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BTMS.BlazorApp.Client.props",
+      "PackagePath": "build\\BTMS.BlazorApp.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BTMS.BlazorApp.Client.props",
+      "PackagePath": "buildMultiTargeting\\BTMS.BlazorApp.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BTMS.BlazorApp.Client.props",
+      "PackagePath": "buildTransitive\\BTMS.BlazorApp.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

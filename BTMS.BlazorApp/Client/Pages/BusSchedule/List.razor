@@ -1,0 +1,63 @@
+﻿@page "/schedules"
+@inject HttpClient http
+@inject NavigationManager nvaManager
+@inject ISnackbar snackbar
+@inject IDialogService DialogService
+<MudCard class="mt-10">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">BusSchedule List</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudFab Size="Size.Small" Href="/schedules/Add" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        @if (this.schedules is null)
+        {
+            <ProgressIndicator />
+        }
+        else
+        {
+            <MudTable Items="@schedules">
+                <HeaderContent>
+                    <MudTh><MudTableSortLabel SortBy="new Func<BusScheduleViewModel, object>(x=>x.RouteName)"> RouteName</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<BusScheduleViewModel, object>(x=>x.Date ?? DateTime.Today)"> Date</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<BusScheduleViewModel, object>(x=>x.Time ?? TimeSpan.Zero)"> Time</MudTableSortLabel></MudTh>
+                    
+                    <MudTh>Bus Route </MudTh>
+                    <MudTh>Bus Type </MudTh>
+                    <MudTh></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                   <MudTd>@context.RouteName</MudTd>
+                    <MudTd>@context.Date?.ToString("yyyy-MM-dd")</MudTd>
+                    <MudTd>@(DateTime.Today.Add(context.Time ?? TimeSpan.Zero).ToString("hh:mm tt"))</MudTd>
+                    <MudTd>@context.BusName</MudTd>
+                    <MudTd>@context.BusType</MudTd>
+                    <MudTd>Edit/Delete</MudTd>
+                </RowTemplate>
+                <PagerContent>
+                    <MudTablePager PageSizeOptions="new int[] { 10, 25, 50, 100 }" HorizontalAlignment="HorizontalAlignment.Right" />
+
+                </PagerContent>
+            </MudTable>
+        }
+    </MudCardContent>
+</MudCard>
+@code {
+    private List<BusScheduleViewModel>? schedules { get; set; }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await this.http.GetFromJsonAsync<List<BusScheduleViewModel>>("/api/BusSchedules/VM");
+        if(data is null)
+        {
+
+        }
+        else
+        {
+            this.schedules = data;
+        }
+    }
+}

@@ -1,0 +1,108 @@
+﻿@page "/fares"
+@inject HttpClient http
+@inject NavigationManager nvaManager
+@inject ISnackbar snackbar
+@inject IDialogService DialogService
+<MudCard class="mt-10">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">Bus routes & fares</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudFab Size="Size.Small" Href="/fares/Add" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        @if (this.busRoutes is null)
+        {
+            <ProgressIndicator />
+        }
+        else
+        {
+            <MudTable Items="@busRoutes">
+                <HeaderContent>
+                    <MudTh></MudTh>
+                    <MudTh>Route</MudTh>
+                    <MudTh>Actions</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>
+                        @if (this.selectedRoutes.Contains(context.BusRouteId))
+                        {
+                            <MudIconButton Icon="@Icons.Material.Filled.ArrowDropDown" OnClick="@(() => UnSelectBusRoute(@context.BusRouteId))"></MudIconButton>
+                            
+                        }
+                        else
+                        {
+                            <MudIconButton Icon="@Icons.Material.Filled.ArrowRight" OnClick="@(() => SelectBusRoute(@context.BusRouteId))"></MudIconButton>
+                        }
+                    </MudTd>
+                    <MudTd>@($"{@context.From}-{@context.To}")</MudTd>
+                        <MudTd>Edi/Delete</MudTd>
+                    </RowTemplate>
+                    <ChildRowContent>
+                        @if (this.selectedRoutes.Contains(context.BusRouteId))
+                        {
+                        <MudTr>
+                            <td colspan="3">
+                            <MudCard style="width:100%">
+                                <MudCardHeader>
+                                    <CardHeaderContent>
+                                        <MudText Typo="Typo.h6">Fares</MudText>
+                                    </CardHeaderContent>
+                                   
+                                </MudCardHeader>
+                                <MudCardContent Class="pa-0" style="width:100%">
+                                    <MudTable  Items="@context.Fares" Context="fareContext" >
+                                        <ColGroup>
+                                            <col style="width:50%" />
+                                            <col style="width:50%" />
+                                        </ColGroup>
+                                        <HeaderContent>
+                                            <MudTh>Bus type</MudTh>
+                                            <MudTh>Fare</MudTh>
+                                        </HeaderContent>
+                                        <RowTemplate>
+                                            <MudTd DataLabel="Bus type">@fareContext.BusType</MudTd>
+                                            <MudTd DataLabel="Fare">@fareContext.SeatFare</MudTd>
+                                        </RowTemplate>
+                                    </MudTable>
+                                </MudCardContent>
+                            </MudCard>
+                            </td>
+                        </MudTr>
+                    }
+                </ChildRowContent>
+                <PagerContent>
+                    <MudTablePager PageSizeOptions="new int[] { 10, 25, 50, 100 }" HorizontalAlignment="HorizontalAlignment.Right" />
+
+                </PagerContent>
+            </MudTable>
+        }
+    </MudCardContent>
+</MudCard>
+
+@code {
+    List<BusRoute>? busRoutes;
+    List<int> selectedRoutes = new List<int>();
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await this.http.GetFromJsonAsync<List<BusRoute>>("/api/Fares/Fares");
+        if (data is null)
+        {
+
+        }
+        else
+        {
+            busRoutes = data;
+        }
+    }
+    private void SelectBusRoute(int id)
+    {
+        this.selectedRoutes.Add(id);
+    }
+    private void UnSelectBusRoute(int id)
+    {
+        this.selectedRoutes.Remove(id);
+    }
+}

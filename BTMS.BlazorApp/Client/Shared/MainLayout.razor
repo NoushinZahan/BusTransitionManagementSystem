@@ -1,0 +1,36 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        GO Ticket
+    </MudAppBar>
+    <MudDrawer Width="256px" @bind-Open="@_drawerOpen" Variant="@DrawerVariant.Temporary">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6" Class="nav" Color="Color.Tertiary">Go Ticket</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>           
+            <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/" Match="NavLinkMatch.Prefix">Home</MudNavLink>
+
+            <MudNavLink Icon="@Icons.Material.Filled.DirectionsBus" Href="/buses" Match="NavLinkMatch.Prefix">Bus</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Route" Href="/pages/busroutes" Match="NavLinkMatch.Prefix">Bus Routes</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Wallet" Href="/fares" Match="NavLinkMatch.Prefix">Ticket fares</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Event" Href="/schedules" Match="NavLinkMatch.Prefix">Schedules</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+@code {
+    bool _drawerOpen = false;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

@@ -1,0 +1,135 @@
+﻿@page "/schedules/Add"
+@inject HttpClient http
+@inject ISnackbar snackbar
+<MudCard class="form-card">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">Create new busSchedule</MudText>
+        </CardHeaderContent>
+
+    </MudCardHeader>
+    <MudCardContent>
+        <EditForm Model="@busSchedule" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <div >
+                <MudSelect @bind-Value="this.busSchedule.BusRouteId" T="int" Label="Bus Route" AdornmentColor="Color.Secondary">
+                    @if (routeSelectDataSource is null)
+                    {
+
+                    }
+                    else
+                    {
+                        @foreach (var item in routeSelectDataSource)
+                        {
+                            <MudSelectItem Value="@item.BusRouteId">@item.RouteName</MudSelectItem>
+                        }
+                    }
+                    <MudSelectItem Value="0">Select one</MudSelectItem>
+                </MudSelect>
+            </div>
+             <div class="c-2">
+                <MudDatePicker Label="Date" @bind-Date="busSchedule.Date" For="@(() => busSchedule.Date)" />
+                <MudTimePicker Label="Time" AmPm="true" @bind-Time="busSchedule.Time" For="@(() => busSchedule.Time)" />
+            </div>
+           <div class="c-2">
+
+                <MudSelect T="BusType" @bind-Value="InitialValue" SelectedValuesChanged="(values) => OnSelectedValuesChanged(values)">
+                    
+                    @foreach (BusType item in Enum.GetValues(typeof(BusType)))
+                    {
+                        <MudSelectItem Value="@item">@item</MudSelectItem>
+                    }
+                </MudSelect>
+                
+                <MudSelect @bind-Value="this.busSchedule.BusId"  T="int" Label="Bus" AdornmentColor="Color.Secondary">
+                    @if(busSelectDataSouce is null)
+                    {
+                        
+                    }
+                    else
+                    {
+                        @foreach(var item in busSelectDataSouce)
+                        {
+                            <MudSelectItem Value="@item.BusId">@item.Name</MudSelectItem>
+                        }
+                    }
+                    <MudSelectItem Value="0" >Select one</MudSelectItem>
+                </MudSelect>
+           </div>
+            <div class="c-2">
+                <span></span>
+                <div style="text-align:right">
+                   
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Save</MudButton>
+                </div>
+
+            </div>
+        </EditForm>
+    </MudCardContent>
+</MudCard>
+<div>@JsonSerializer.Serialize(this.busSchedule)</div>
+@code {
+    private BusSchedule busSchedule = new() { BusRouteId=0, BusId=0};
+
+    private List<Bus>? buses;
+    private List<Bus>? busSelectDataSouce;
+    private List<BusRouteViewModel>? routeSelectDataSource;
+    BusType InitialValue = BusType.NonAc;
+   
+    protected override  async Task OnInitializedAsync()
+    {
+        var data = await this.http.GetFromJsonAsync<List<BusRouteViewModel>>("/api/BusRoutes/VM");
+        if (data is null)
+        {
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Cannot load busses.", Severity.Error);
+        }
+        else
+        {
+            this.routeSelectDataSource = data;
+        } 
+        var busData = await this.http.GetFromJsonAsync<List<Bus>>("/api/Buses");
+        if (busData is null)
+        {
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Cannot load busses.", Severity.Error);
+        }
+        else
+        {
+            this.buses = busData;
+            this.busSelectDataSouce = busData.Where(x=> x.BusType == this.InitialValue).ToList();
+        }
+    }
+    private async void HandleValidSubmit(EditContext editContext)
+    {
+
+        await this.Save();
+
+
+    }
+    private async Task Save()
+    {
+        var response = await this.http.PostAsJsonAsync<BusSchedule>("/api/BusSchedules", this.busSchedule);
+        if (response.IsSuccessStatusCode)
+        {
+            this.snackbar.Clear();
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Data saved.", Severity.Success);
+            this.busSchedule = new() { BusRouteId=0, BusId=0};
+            this.StateHasChanged();
+        }
+        else
+        {
+            this.snackbar.Clear();
+            this.snackbar.Configuration.PositionClass = Defaults.Classes.Position.BottomCenter;
+            this.snackbar.Add("Failed to save.", Severity.Warning);
+        }
+    }
+    private void OnSelectedValuesChanged(IEnumerable<BusType> values)
+    {
+        this.InitialValue = values.ElementAt(0);
+        this.busSelectDataSouce = this.buses?.Where(b => b.BusType == this.InitialValue).ToList();
+        this.StateHasChanged();
+        // Show your popup
+    }
+}
